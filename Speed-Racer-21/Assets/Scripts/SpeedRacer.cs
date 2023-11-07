@@ -22,18 +22,7 @@ public class SpeedRacer : MonoBehaviour
     public TextMeshProUGUI modelText;
     public TextMeshProUGUI fuelText;
 
-    public class Fuel
-    {
-        public int fuelLevel;
-
-        public Fuel(int amount)
-        {
-            fuelLevel = amount;
-        }
-    }
-
-    public Fuel carFuel = new Fuel(100);
-
+    
 
     void Start()
     {
@@ -67,7 +56,7 @@ public class SpeedRacer : MonoBehaviour
         }
     }
 
-    public void ConsumeFuel()
+    void ConsumeFuel()
     {
         //if (carFuel.fuelLevel <= 0)
         //{
@@ -75,17 +64,11 @@ public class SpeedRacer : MonoBehaviour
         //}
 
         carFuel.fuelLevel = Mathf.Max(0, carFuel.fuelLevel - 10);
-
-
-        //carFuel.fuelLevel -= 10;
-
-        //if (carFuel.fuelLevel <= 0)
-        //{
-        //    carFuel.fuelLevel = 0;
-        //}
     }
 
-    public void CheckFuelLevel()
+    
+
+ void CheckFuelLevel()
     {
         switch (carFuel.fuelLevel)
         {
@@ -122,7 +105,7 @@ public class SpeedRacer : MonoBehaviour
 
     int CalculateAge(int yearMade)
     {
-        return 2021 - yearMade;
+        return 2023 - yearMade;
     }
 
     string CheckCharacteristics()
@@ -140,4 +123,9 @@ public class SpeedRacer : MonoBehaviour
             return "The car is neither a sedan, nor is its engine a front engine.";
         }
     }
+}
+
+internal class carFuel
+{
+    internal static int fuelLevel;
 }
