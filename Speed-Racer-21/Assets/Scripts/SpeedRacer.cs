@@ -6,18 +6,18 @@ using TMPro;
 
 public class SpeedRacer : MonoBehaviour
 {
+
     // Declare and initialise the car's information
-    public string carMaker;
-    public string carModel = "GTR R35";
-    public string engineType = "V6, Twin Turbo";
+    public string carMaker = Lamborgini;
+    public string carModel = "Huracan Evo";
+    public string engineType = "Naturally Aspirated V10";
 
-    public int carWeight = 1609;
-    public int yearMade = 2009;
+    public int carWeight = 1665;
+    public int yearMade = 2019;
 
-    public float maxAcceleration = 0.98f;
-
+    public float maxAcceleration = 1.06F;
     public bool isCarTypeSedan = false;
-    public bool hasFrontEngine = true;
+    public bool hasFrontEngine = false;
 
     public TextMeshProUGUI modelText;
     public TextMeshProUGUI fuelText;
@@ -34,6 +34,7 @@ public class SpeedRacer : MonoBehaviour
 
     public Fuel carFuel = new Fuel(100);
 
+    public static string Lamborgini { get; private set; }
 
     void Start()
     {
@@ -42,7 +43,7 @@ public class SpeedRacer : MonoBehaviour
 
         CheckWeight();
 
-        if (yearMade <= 2009)
+        if (yearMade <= 2019)
         {
             //print("It was first introduced in " + yearMade);
             modelText.text += "\nIt was first introduced in " + yearMade;
@@ -67,7 +68,7 @@ public class SpeedRacer : MonoBehaviour
         }
     }
 
-    public void ConsumeFuel()
+    void ConsumeFuel()
     {
         //if (carFuel.fuelLevel <= 0)
         //{
@@ -75,17 +76,11 @@ public class SpeedRacer : MonoBehaviour
         //}
 
         carFuel.fuelLevel = Mathf.Max(0, carFuel.fuelLevel - 10);
-
-
-        //carFuel.fuelLevel -= 10;
-
-        //if (carFuel.fuelLevel <= 0)
-        //{
-        //    carFuel.fuelLevel = 0;
-        //}
     }
 
-    public void CheckFuelLevel()
+    
+
+ void CheckFuelLevel()
     {
         switch (carFuel.fuelLevel)
         {
@@ -122,7 +117,7 @@ public class SpeedRacer : MonoBehaviour
 
     int CalculateAge(int yearMade)
     {
-        return 2021 - yearMade;
+        return 2023 - yearMade;
     }
 
     string CheckCharacteristics()
@@ -140,4 +135,9 @@ public class SpeedRacer : MonoBehaviour
             return "The car is neither a sedan, nor is its engine a front engine.";
         }
     }
+}
+
+internal class carFuel
+{
+    internal static int fuelLevel;
 }
